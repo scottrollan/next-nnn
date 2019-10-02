@@ -3,10 +3,10 @@ import Layout from "./Layout";
 const Hours = () => {
   return (
     <Layout>
-      <div className="card mb-3" style={{ width: "40%", margin: "0 auto 70px", textAlign: 'center', boxShadow: '5px 10px 18px #cccccc' }}>
-        <h3 className="card-header">Hours</h3>
+      <div className="card mb-3 myCard">
+        <h3 className="card-header myHeader">Hours</h3>
         <div className="card-body">
-          <h5 className="card-title">Wednesday - Saturday, 9:00 - 6:00</h5>
+          <h5 className="card-title schedule">Wednesday - Saturday, 9:00 - 6:00</h5>
           <h6 className="card-subtitle text-muted">...and by appointment...</h6>
         </div>
         <img
@@ -29,6 +29,20 @@ const Hours = () => {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        .myCard {
+          width: 40%;
+          margin: 0 auto 3vh;
+          text-align: center;
+          box-shadow: 5px 10px 18px #cccccc;
+        }
+
+        @media screen and (max-width: 780px) {
+          .myCard {
+            width: 80%;
+          }
+        }
+      `}</style>
     </Layout>
   );
 };
