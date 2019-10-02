@@ -202,7 +202,7 @@ class ContactUs extends Component {
                 class="form-control"
                 id="yourMessage"
                 rows="4"
-                placeholder="Your message here"
+                placeholder="Your message here..."
                 required="required"
               ></textarea>
             </div>
