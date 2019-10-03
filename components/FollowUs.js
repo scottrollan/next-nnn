@@ -8,22 +8,30 @@ const FollowUs = props => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <i style={props.style} className="fab fa-instagram icon-4x"></i>
+        <i className="fab fa-instagram icon-4x"></i>
       </a>
       <a
         href="https://www.facebook.com/pg/NearlyNativeNursery/posts/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <i style={props.style} className="fab fa-facebook"></i>
+        <i className="fab fa-facebook"></i>
       </a>
       <a
         href="https://twitter.com/NNativeNursery"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <i style={props.style} className="fab fa-twitter-square"></i>
+        <i className="fab fa-twitter-square"></i>
       </a>
+      <style jsx>{`
+        i {
+          color: #cccccc
+        }
+        i:hover {
+          color: #107f07;
+        }
+      `}</style>
     </React.Fragment>
   );
 };

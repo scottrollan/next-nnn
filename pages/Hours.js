@@ -31,7 +31,7 @@ const Hours = () => {
       </div>
       <style jsx>{`
         .myCard {
-          width: 40%;
+          width: 30%;
           margin: 0 auto 3vh;
           text-align: center;
           box-shadow: 5px 10px 18px #cccccc;
