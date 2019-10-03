@@ -90,7 +90,7 @@ class ContactUs extends Component {
                   class="form-control"
                   id="name"
                   aria-describedby="emailHelp"
-                  placeholder="Jacob Lamont"
+                  placeholder="Jane Doe"
                   required='required'
                   style={{ width: "45%", marginRight: "5%" }}
                 />
@@ -99,7 +99,7 @@ class ContactUs extends Component {
                   class="form-control"
                   id="state"
                   aria-describedby="emailHelp"
-                  placeholder="Enter email"
+                  placeholder="jane@email.com"
                   required="required"
                   style={{ width: "45%" }}
                 />
@@ -165,10 +165,10 @@ class ContactUs extends Component {
                 City
               </label>
               <label for="st" style={{ width: "40%" }}>
-                State
+                State/Province
               </label>              
               <label for="zip" style={{ width: "20%" }}>
-                ZIP
+                Postal Code
               </label>
               </span>
 
@@ -197,7 +197,7 @@ class ContactUs extends Component {
               </span>
 
             <div class="form-group">
-              <label for="exampleTextarea">Your message</label>
+              <label for="yourMessage">Your message</label>
               <textarea
                 class="form-control"
                 id="yourMessage"
@@ -214,10 +214,7 @@ class ContactUs extends Component {
                 id="exampleInputFile"
                 aria-describedby="fileHelp"
               />
-              <small id="fileHelp" class="form-text text-muted">
-                This is some placeholder block-level help text for the above
-                input. It's a bit lighter and easily wraps to a new line.
-              </small>
+              
             </div>
 
             <button type="submit" class="btn btn-primary">
@@ -225,6 +222,9 @@ class ContactUs extends Component {
             </button>
           </fieldset>
         </form>
+        <img src='../static/fluttering.gif' alt='' style={{ position: 'fixed', top: '15vh', left: '2vw', width: '12vw' }} />
+        <img src='../static/fluttering2.gif' alt='' style={{ position: 'fixed', bottom: '15vh', right: '2vw', width: '12vw', transform: 'rotateY(180deg)', WebkitTransform: 'rotateY(180deg)' }} />
+
       </Layout>
     );
   }

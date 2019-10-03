@@ -2,6 +2,7 @@ import React from 'react';
 import Head from "next/head";
 // import Nav from "../components/Navbar";
 import Nav from "../components/nav";
+import Footer from "../components/Footer";
 
 
 const Layout = (props) => (
@@ -15,13 +16,14 @@ const Layout = (props) => (
     </Head>
 
     <Nav />
+    <Footer />
 
     <div className="layout">
       {props.children}
     </div>
     <style jsx>{`
       .layout {
-        padding: 0 3vw;
+        padding: 0 3vw 18vh;
       }
     `}</style>
   </div>

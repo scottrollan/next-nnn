@@ -20,7 +20,7 @@ class Nav extends Component {
   render() {
     return (
       <nav className="navbar navbar-default">
-        <div className="container-fluid"  >
+        <div className="container-fluid">
           <div className="navbar-header">
             <button
               type="button"
@@ -33,9 +33,16 @@ class Nav extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="index">
-              <img src='../static/N3nameTransparent.png' alt="" style={{ height: '23px', lineHeight: '64px' }}/>
-            </a>
+
+            <Link href="index">
+              <a className="navbar-brand">
+                <img
+                  src="../static/N3nameTransparent.png"
+                  alt=""
+                  style={{ height: "23px", lineHeight: "64px" }}
+                />
+              </a>
+            </Link>
           </div>
 
           <div
@@ -44,17 +51,20 @@ class Nav extends Component {
           >
             <ul className="nav navbar-nav">
               <li className="active">
-                <a href="index">
-                  Home <span className="sr-only">(current)</span>
-                </a>
+                <Link href="index">
+                  <a>
+                    Home <span className="sr-only">(current)</span>
+                  </a>
+                </Link>
               </li>
 
               <li>
-                <a href="SearchPage">Search Plants</a>
+                <Link href="SearchPage">
+                  <a>Search Plants</a>
+                </Link>
               </li>
 
-              <li className="dropdown" 
->
+              <li className="dropdown">
                 <a
                   href="#"
                   className="dropdown-toggle"
@@ -76,23 +86,32 @@ class Nav extends Component {
                   onMouseOut={() => this.mouseOut("ourNursery")}
                 >
                   <li>
-                    <a href="AboutUs">About Us</a>
+                    <Link href="AboutUs">
+                      <a>About Us</a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="ContactUs">Contact Us</a>
+                    <Link href="ContactUs">
+                      <a>Contact Us</a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="Hours">Hours</a>
-                  </li>                  
+                    <Link href="Hours">
+                      <a>Hours</a>
+                    </Link>
+                  </li>
                   <li>
-                    <a 
+                    <a
                       href="https://www.google.com/maps/place/Nearly+Native+Nursery/@33.38202,-84.473911,15z/data=!4m5!3m4!1s0x0:0xf3eaee697edb71e1!8m2!3d33.38202!4d-84.473911"
-                      target="blank"
-                    >Map</a>
+                      target="_blank"
+                    >
+                      >Map
+                    </a>
                   </li>
                   <li className="divider"></li>
                   <li>
-                    <a href="https://www.rarepalmseeds.com" target='blank'>Rare Palm Seeds</a>
+                    <a href="https://www.rarepalmseeds.com" target="_blank">
+                      >Rare Palm Seeds</a>
                   </li>
                 </ul>
               </li>
@@ -109,13 +128,9 @@ class Nav extends Component {
                 Submit
               </button>
             </form>
-
           </div>
         </div>
       </nav>
-
-      
-
     );
   }
 }
