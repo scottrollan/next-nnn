@@ -23,15 +23,7 @@ const Home = () => {
             <strong>Read more...</strong>
           </a>
         </h3>
-        {/* <div>
-        <img 
-          src='../static/skipperOnEchinacea.jpg' 
-          alt=''
-          style={{ opacity: '.75' }} /> 
-      </div> */}
-        {/* <div style={carouselStyles} className="carousel">
-          <Carousel />
-        </div> */}
+
         <div className="bottom">
           <a
             href="https://www.instagram.com/explore/locations/39376531/nearly-native-nurserynative-oasis-botanical-garden/?hl=en"
@@ -56,10 +48,14 @@ const Home = () => {
           >
             <i className="fab fa-twitter-square"></i>
           </a>
+          <p className="subText">776 McBride Road, Fayetteville, Ga 30215</p>
+          <p className="subText">770-460-6284</p>
         </div>
+
         <style jsx>{`
           .page {
-            margin-top: 0;
+            margin: 0;
+            min-height: 95vh;
             background-image: url(../static/skipperOnEchinacea.jpg);
             background-repeat: none;
             background-size: cover;
@@ -77,9 +73,17 @@ const Home = () => {
           .readMore:hover {
             color: #0000ff;
           }
+          
+          h3 {
+            font-size: calc(18px + 1vw);
+            color: #eee;
+            text-align: center;
+            padding: 0 2vw 15vh;
+          }
+
           .bottom {
             margin: 5vh auto;
-            width: 50%;
+            width: 60%;
             font-size: 8vw;
             text-align: center;
           }
@@ -87,11 +91,9 @@ const Home = () => {
             color: #cccccc;
           }
 
-          h3 {
-            font-size: calc(18px + 1vw);
-            color: #eee;
-            text-align: center;
-            padding: 0 2vw 15vh;
+          .subText {
+            color: #cccccc;
+            font-size: calc(18px + .5vw);
           }
         `}</style>
       </div>

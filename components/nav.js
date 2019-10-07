@@ -3,17 +3,24 @@ import Link from "next/link";
 
 class Nav extends Component {
   state = {
-    menuIsActive: false
+    dropDownIsOpen: false,
+    hamburgerIsOpen: false
   };
 
   dropDown = () => {
     this.setState({
-      menuIsActive: !this.state.menuIsActive
+      dropDownIsOpen: !this.state.dropDownIsOpen
+    });
+  };
+
+  toggleHamburger = () => {
+    this.setState({
+      hamburgerIsOpen: !this.state.hamburgerIsOpen
     });
   };
 
   mouseOut = list => {
-    this.setState({ menuIsActive: !this.state.menuIsActive });
+    this.setState({ dropDownIsOpen: !this.state.dropDownIsOpen });
     document.getElementById(list).style.display = "none";
   };
 
@@ -25,8 +32,9 @@ class Nav extends Component {
             <button
               type="button"
               className="navbar-toggle collapsed"
-              data-toggle="collapse"
-              data-target="#bs-example-navbar-collapse-1"
+              // data-toggle="collapse"
+              // data-target="#bs-example-navbar-collapse-1"
+              onClick={() => this.toggleHamburger()}
             >
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
@@ -48,6 +56,7 @@ class Nav extends Component {
           <div
             className="collapse navbar-collapse"
             id="bs-example-navbar-collapse-1"
+            style={{ display: this.state.hamburgerIsOpen ? "block" : "none" }}
           >
             <ul className="nav navbar-nav">
               <li className="active">
@@ -64,15 +73,11 @@ class Nav extends Component {
                 </Link>
               </li>
 
-              <li className="dropdown">
-                <a
-                  href="#"
-                  className="dropdown-toggle"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-expanded="false"
-                  onClick={() => this.dropDown()}
-                >
+              <li
+                className="dropdown"
+                onMouseOut={() => this.mouseOut("ourNursery")}
+              >
+                <a href="#" onClick={() => this.dropDown()}>
                   Our Nursery
                   <span className="caret"></span>
                 </a>
@@ -80,10 +85,10 @@ class Nav extends Component {
                   className="dropdown-menu"
                   role="menu"
                   style={{
-                    display: this.state.menuIsActive ? "block" : "none"
+                    display: this.state.dropDownIsOpen ? "block" : "none"
                   }}
                   id="ourNursery"
-                  onMouseOut={() => this.mouseOut("ourNursery")}
+                  // onMouseOut={() => this.mouseOut("ourNursery")}
                 >
                   <li>
                     <Link href="AboutUs">
@@ -105,13 +110,14 @@ class Nav extends Component {
                       href="https://www.google.com/maps/place/Nearly+Native+Nursery/@33.38202,-84.473911,15z/data=!4m5!3m4!1s0x0:0xf3eaee697edb71e1!8m2!3d33.38202!4d-84.473911"
                       target="_blank"
                     >
-                      >Map
+                      Map
                     </a>
                   </li>
                   <li className="divider"></li>
                   <li>
                     <a href="https://www.rarepalmseeds.com" target="_blank">
-                      >Rare Palm Seeds</a>
+                      Rare Palm Seeds
+                    </a>
                   </li>
                 </ul>
               </li>
