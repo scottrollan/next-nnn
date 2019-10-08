@@ -1,29 +1,32 @@
 import React, { Component } from "react";
+import GrowingConditions from '../components/GrowingConditions';
+import CategoryMenu from '../components/CategoryMenu';
 
 class DataEntry extends Component {
   state = {
-    in_stock: false,
     botanical_name: "",
     regional_name: "",
     common_name: "",
-    category: "",
-    soil_ph_acid: false,
-    soil_ph_neutral: false,
-    soil_ph_alkaline: false,
-    soil_type_clay: false,
-    soil_type_average: false,
-    soil_type_sand: false,
+    category: "Perennials",
+    in_stock: false,
+    description: "",
+    zone_low: 4,
+    zone_high: 9,
+    soil_ph_acid: true,
+    soil_ph_neutral: true,
+    soil_ph_alkaline: true,
+    soil_type_clay: true,
+    soil_type_average: true,
+    soil_type_sand: true,
     water_dry: false,
-    water_average: false,
+    water_average: true,
     water_wet: false,
     sun_full: false,
-    sun_partial: false,
+    sun_partial: true,
     sun_shade: false,
     foliage_evergreen: false,
     foliage_semievergreen: false,
     foliage_deciduous: false,
-    description: "",
-    zone_high: 0,
     container_1_size: "",
     container_1_price: 0,
     container_1_notes: "",
@@ -38,80 +41,144 @@ class DataEntry extends Component {
     container_4_notes: ""
   };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
-  }
+    console.log(this.state);
+  };
   handleChange = event => {
     event.preventDefault();
     this.setState({ [event.target.id]: event.target.value });
-    console.log(this.state);
   };
   handleCheck = event => {
-    this.setState({ [event.target.id]: event.target.value });
-    console.log(this.state.in_stock);
+    const field = event.target.id;
+    this.setState(prevState => ({
+      [field]: !prevState[field]
+    }));
+    setTimeout(() => console.log(field + ": " + this.state[field]), 1000);
   };
   render() {
     return (
       <div className="page">
         <form style={{ margin: "2vh 10vw", width: "80vw" }}>
           <fieldset>
-            <div className="spacedRow">
-              <span className="indent0">
-                <label htmlFor="botanical_name">Botanical name</label>
+            <legend style={{ fontSize: "calc(14px + 1vw)" }}>
+              Enter New Plant into Inventory
+            </legend>
+            <div
+              className="spacedRow col1"
+              style={{
+                padding: "0 2vw 1vh",
+                boxSizing: "border-box",
+                disply: "block"
+              }}
+            >
+              <span
+                className="spacedRow indent0 col3"
+                style={{ display: "inline-block" }}
+              >
+                <div>
+                  <label htmlFor="botanical_name">Botanical name</label>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    id="botanical_name"
+                    onChange={this.handleChange}
+                  ></input>
+                </div>
+                <br />
+                <div>
+                  <label htmlFor="regional_name">Regional name</label>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    id="regional_name"
+                    onChange={this.handleChange}
+                  ></input>
+                </div>
               </span>
-              <span className="indent40">
-                <label htmlFor="variety" className="indent40">
-                  Variety
-                </label>
-              </span>
-              <span className="indent70">
-                <label htmlFor="category" className="indent80">
-                  Category
-                </label>
-              </span>
-            </div>
-            <div>
-              <span className="indent0 col3">
-                <input type="text" id="botanical_name"></input>
-              </span>
-              <span className="indent40">
-                <input type="text" id="variety"></input>
-              </span>
-              <span className="indent70">
-                <select id="category" className="indent80">
-                  <option value="Ferns">Ferns</option>
-                  <option value="Grasses">Grasses</option>
-                  <option value="Opuntia">Opuntia</option>
-                  <option value="Palms">Palms</option>
-                  <option value="Perennials">Perennials</option>
-                  <option value="Seeds">Seeds</option>
-                  <option value="Shrubs">Shrubs</option>
-                  <option value="Trees">Trees</option>
-                  <option value="Vines">Vines</option>
-                  <option value="Yucca">Yucca</option>
-                </select>
-              </span>
-            </div>
 
-            <div className="spacedRow">
-              <span className="indent0">
-                <label htmlFor="regional_name">Regional name</label>
+              <span
+                className="spacedRow indent40 col3"
+                style={{ display: "inline-block" }}
+              >
+                <div>
+                  <label htmlFor="variety">Variety</label>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    id="variety"
+                    onChange={this.handleChange}
+                  ></input>
+                </div>
+                <br />
+                <div>
+                  <label htmlFor="common_name">Common name</label>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    id="common_name"
+                    onChange={this.handleChange}
+                  ></input>
+                </div>
               </span>
-              <span className="indent40">
-                <label htmlFor="common_name">Common name</label>
-              </span>
-            </div>
 
-            <div>
-              <span className="indent0">
-                <input type="text" id="regional_name"></input>
-              </span>
-              <span className="indent40">
-                <input type="text" id="common_name"></input>
-              </span>
-              <span className="indent70">
-                <label htmlFor="zone_low">from Zone: </label>
-                <input type="number" id="zone_low" min="1" max="12" />
+              <span
+                className="spacedRow indent70"
+                style={{ display: "inline-block" }}
+              >
+                <CategoryMenu category={this.state.category} handleChange={this.handleChange} />
+                {/* <div>
+                  <label htmlFor="category">Category</label>
+                </div>
+                <div>
+                  <select
+                    id="category"
+                    value={this.state.category}
+                    onChange={this.handleChange}
+                  >
+                    <option value="Ferns">Ferns</option>
+                    <option value="Grasses">Grasses</option>
+                    <option value="Opuntia">Opuntia</option>
+                    <option value="Palms">Palms</option>
+                    <option value="Perennials">Perennials</option>
+                    <option value="Seeds">Seeds</option>
+                    <option value="Shrubs">Shrubs</option>
+                    <option value="Trees">Trees</option>
+                    <option value="Vines">Vines</option>
+                    <option value="Yucca">Yucca</option>
+                  </select>
+                </div> */}
+                <br />
+                <div>
+                  <label htmlFor="zone_low">from Zone: </label>
+                </div>
+                <div>
+                  <input
+                    type="number"
+                    id="zone_low"
+                    min="1"
+                    max="12"
+                    value={this.state.zone_low}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="zone_high">to Zone: </label>
+                </div>
+                <div>
+                  <input
+                    type="number"
+                    id="zone_high"
+                    min="2"
+                    max="13"
+                    value={this.state.zone_high}
+                    onChange={this.handleChange}
+                  />
+                </div>
               </span>
             </div>
 
@@ -120,13 +187,9 @@ class DataEntry extends Component {
                 <label htmlFor="in_stock">In stock?</label>
                 <input
                   type="checkbox"
-                  className="checkboxStyle"
                   id="in_stock"
+                  onChange={this.handleCheck}
                 ></input>
-              </span>
-              <span className="indent70">
-                <label htmlFor="zone_high">to Zone: </label>
-                <input type="number" id="zone_high" min="2" max="13" />
               </span>
             </div>
 
@@ -141,146 +204,23 @@ class DataEntry extends Component {
               />
             </div>
 
-            <div
-              className="spacedRow col1"
-              style={{ padding: "0 2vw 1vh", boxSizing: "border-box", border: "1px solid #cccccc" }}
-            >
-              <span
-                className="spacedRow indent0 col5"
-                style={{ display: "inline-block" }}
-              >
-                <div>Soil Ph</div>
-                <div>
-                  <input type="checkbox" id="soil_ph_acid"></input>
-                  <label htmlFor="soil_ph_acid">acid</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    className="checkboxStyle"
-                    id="soil_ph_neutral"
-                  ></input>
-                  <label htmlFor="soil_ph_neutral">neutral</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    className="checkboxStyle"
-                    id="soil_ph_alkaline"
-                  ></input>
-                  <label htmlFor="soil_ph_alkaline">alkaline</label>
-                </div>
-              </span>
-
-              <span className="spacedRow indent25 col5">
-                <div>Soil Type</div>
-                <div>
-                  <input type="checkbox" id="soil_type_clay"></input>
-                  <label htmlFor="soil_type_clay">clay</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    className="checkboxStyle"
-                    id="soil_type_average"
-                  ></input>
-                  <label htmlFor="soil_type_average">average</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    className="checkboxStyle"
-                    id="soil_type_sand"
-                  ></input>
-                  <label htmlFor="soil_type_sand">sand</label>
-                </div>
-              </span>
-
-              <span className="spacedRow indent40 col5">
-                <div>Water</div>
-                <div>
-                  <input type="checkbox" id="water_wet"></input>
-                  <label htmlFor="water_wet">wet</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    className="checkboxStyle"
-                    id="water_average"
-                  ></input>
-                  <label htmlFor="water_average">average</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    className="checkboxStyle"
-                    id="water_dry"
-                  ></input>
-                  <label htmlFor="water_dry">dry</label>
-                </div>
-              </span>
-
-              <span className="spacedRow indent55 col5">
-                <div>Sun Exposure</div>
-                <div>
-                  <input type="checkbox" id="sun_full"></input>
-                  <label htmlFor="sun_full">full</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    className="checkboxStyle"
-                    id="sun_partial"
-                  ></input>
-                  <label htmlFor="sun_partial">partial</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    className="checkboxStyle"
-                    id="sun_shade"
-                  ></input>
-                  <label htmlFor="sun_shade">shade</label>
-                </div>
-              </span>
-
-              <span className="spacedRow indent70 col5">
-                <div>Foliage</div>
-                <div>
-                  <input type="checkbox" id="foliage_evergreen"></input>
-                  <label htmlFor="foliage_evergreen">evergreen</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    className="checkboxStyle"
-                    id="foliage_semievergreen"
-                  ></input>
-                  <label htmlFor="foliage_semievergreen">semi-evergreen</label>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    className="checkboxStyle"
-                    id="foliage_deciduous"
-                  ></input>
-                  <label htmlFor="foliage_deciduous">deciduous</label>
-                </div>
-              </span>
-            </div>
+            <GrowingConditions handleCheck={this.handleCheck} />
 
             <div
               className="spacedRow col1"
               style={{
                 boxSizing: "border-box",
                 backgroundColor: "rgba(200, 200, 200, 0.5)",
-                borderRadius: '1vw',
+                borderRadius: "1vw",
                 padding: "0 2vw 1vh"
               }}
             >
               <div>
                 <span className="indent0">
-                  <label htmlFor="container_1_size">
+                  <label
+                    htmlFor="container_1_size"
+                    value={this.state.container_1_size}
+                  >
                     First container size:{" "}
                   </label>
                 </span>
@@ -293,13 +233,19 @@ class DataEntry extends Component {
 
               <div>
                 <span className="indent0">
-                  <input type="text" id="container_1_size"></input>
+                  <input
+                    type="text"
+                    id="container_1_size"
+                    onChange={this.handleChange}
+                  ></input>
                 </span>
                 <span className="indent50">
                   <input
                     type="number"
+                    step="0.01"
                     id="container_1_price"
                     placeholder="$"
+                    onChange={this.handleChange}
                   ></input>
                 </span>
               </div>
@@ -318,13 +264,13 @@ class DataEntry extends Component {
                 </span>
               </div>
             </div>
-            <hr/>
+            <hr />
             <div
               className="spacedRow col1"
               style={{
                 boxSizing: "border-box",
                 backgroundColor: "rgba(200, 200, 200, 0.5)",
-                borderRadius: '1vw',
+                borderRadius: "1vw",
                 padding: "0 2vw 1vh"
               }}
             >
@@ -343,13 +289,19 @@ class DataEntry extends Component {
 
               <div>
                 <span className="indent0">
-                  <input type="text" id="container_2_size"></input>
+                  <input
+                    type="text"
+                    id="container_2_size"
+                    onChange={this.handleChange}
+                  ></input>
                 </span>
                 <span className="indent50">
                   <input
                     type="number"
+                    step="0.01"
                     id="container_2_price"
                     placeholder="$"
+                    onChange={this.handleChange}
                   ></input>
                 </span>
               </div>
@@ -375,7 +327,7 @@ class DataEntry extends Component {
               style={{
                 boxSizing: "border-box",
                 backgroundColor: "rgba(200, 200, 200, 0.5)",
-                borderRadius: '1vw',
+                borderRadius: "1vw",
                 padding: "0 2vw 1vh"
               }}
             >
@@ -394,13 +346,19 @@ class DataEntry extends Component {
 
               <div>
                 <span className="indent0">
-                  <input type="text" id="container_3_size"></input>
+                  <input
+                    type="text"
+                    id="container_3_size"
+                    onChange={this.handleChange}
+                  ></input>
                 </span>
                 <span className="indent50">
                   <input
                     type="number"
+                    step="0.01"
                     id="container_3_price"
                     placeholder="$"
+                    onChange={this.handleChange}
                   ></input>
                 </span>
               </div>
@@ -445,13 +403,19 @@ class DataEntry extends Component {
 
               <div>
                 <span className="indent0">
-                  <input type="text" id="container_4_size"></input>
+                  <input
+                    type="text"
+                    id="container_4_size"
+                    onChange={this.handleChange}
+                  ></input>
                 </span>
                 <span className="indent50">
                   <input
                     type="number"
+                    step="0.01"
                     id="container_4_price"
                     placeholder="$"
+                    onChange={this.handleChange}
                   ></input>
                 </span>
               </div>
@@ -478,6 +442,7 @@ class DataEntry extends Component {
                   id="dataEntrySubmit"
                   type="submit"
                   className="btn btn-primary"
+                  onClick={this.handleSubmit}
                 >
                   Enter
                 </button>
@@ -488,7 +453,7 @@ class DataEntry extends Component {
         <style jsx>
           {`
             .page {
-                font-size: calc(14px + .5vw)
+              font-size: calc(14px + 0.5vw);
             }
             .spacedRow {
               margin-top: 2vh;
@@ -496,18 +461,6 @@ class DataEntry extends Component {
             .indent0 {
               position: relative;
               left: 0%;
-              width: auto;
-            }
-
-            .indent25 {
-              position: absolute;
-              left: 28%;
-              width: auto;
-            }
-
-            .indent30 {
-              position: absolute;
-              left: 30%;
               width: auto;
             }
 
@@ -523,29 +476,11 @@ class DataEntry extends Component {
               width: auto;
             }
 
-            .indent55 {
-              position: absolute;
-              left: 55%;
-              width: auto;
-            }
             .indent70 {
               position: absolute;
               left: 70%;
             }
-
-            .indent80 {
-              position: absolute;
-              left: 80%;
-              width: auto;
-            }
-            .indent85 {
-              position: absolute;
-              left: 85%;
-            }
-            .indent90 {
-              position: absolute;
-              left: 90%;
-            }
+ 
             .sideAffix {
               position: fixed;
               z-index: 1;
@@ -556,14 +491,9 @@ class DataEntry extends Component {
             .col1 {
               width: 100%;
             }
-            .col2 {
-              width: 50%;
-            }
+
             .col3 {
-              width: 33%;
-            }
-            .col4 {
-              width: 25%;
+              max-width: 33%;
             }
             .col5 {
               min-width: 20%;
