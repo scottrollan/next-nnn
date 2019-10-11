@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "seed": "node scripts/seedDB.js"
+    "seed": "node scripts/seed.js"
   },
   "dependencies": {
     "next": "9.0.7",
