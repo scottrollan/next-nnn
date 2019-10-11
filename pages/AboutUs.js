@@ -5,6 +5,17 @@ import Layout from "./Layout";
 const AboutUs = () => {
   return (
     <Layout>
+      <img
+              src="../static/fluttering2.gif"
+              alt=""
+              style={{
+                float: "right",
+                width: "12vw",
+                zIndex: "2",
+                transform: "rotateY(180deg)",
+                WebkitTransform: "rotateY(180deg)"
+              }}
+            />
       <p className="pText">
         Nearly Native Nursery is a specialty nursery that promotes, sells, and
         propagates southeastern native plants for all types of landscapes. We
@@ -49,7 +60,12 @@ const AboutUs = () => {
         steep, dry slopes can become beautiful focal points with the right
         native plants in place.
       </p>
-      <p className="pText">
+      <img
+              src="../static/fluttering.gif"
+              alt=""
+              style={{ float: "left", width: "12vw", zIndex: "2" }}
+            />     
+        <p className="pText">
         Our staff is knowledgeable and eager to discuss native plants with all
         of our customers. If we cannot think of the right native option or
         options for you instantly, we will research your situation and get back

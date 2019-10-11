@@ -10,6 +10,7 @@ const CategoryMenu = props => {
                     value={props.category}
                     onChange={props.handleChange}
                   >
+                    <option value="any" disabled >--select--</option>
                     <option value="Ferns">Ferns</option>
                     <option value="Grasses">Grasses</option>
                     <option value="Opuntia">Opuntia</option>

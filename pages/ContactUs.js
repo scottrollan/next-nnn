@@ -22,8 +22,6 @@ class ContactUs extends Component {
   };
 
   handleSubmit = event => {
-    event.preventDefault();
-
     const {
       subject,
       name,
@@ -49,7 +47,8 @@ class ContactUs extends Component {
       zip,
       message
     };
-    console.log(form);
+    console.log(this.state);
+    event.preventDefault();
   };
 
   handleInputChange = event => {
@@ -257,7 +256,7 @@ class ContactUs extends Component {
               alt=""
               style={{ float: "left", width: "12vw", zIndex: "2" }}
             /> */}
-            <button type="submit" onClick={this.handleSubmit} className="btn btn-primary">
+            <button type="submit" onSubmit={() => this.handleSubmit()} className="btn btn-primary">
               Submit
             </button>
           </fieldset>
