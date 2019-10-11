@@ -1,11 +1,11 @@
-const GrowingConditions = props => {
-  return (
+const GrowingConditions = props => (
     <div
       className="spacedRow col1"
       style={{
         padding: "0 2vw 1vh",
         boxSizing: "border-box",
-        border: "1px solid #cccccc"
+        border: "1px solid #cccccc",
+        textAlign: "left"
       }}
     >
       <span
@@ -18,7 +18,6 @@ const GrowingConditions = props => {
             type="checkbox"
             id="soil_ph_acid"
             onChange={props.handleCheck}
-            defaultChecked
           ></input>
           <label htmlFor="soil_ph_acid">acid</label>
         </div>
@@ -27,7 +26,6 @@ const GrowingConditions = props => {
             type="checkbox"
             id="soil_ph_neutral"
             onChange={props.handleCheck}
-            defaultChecked
           ></input>
           <label htmlFor="soil_ph_neutral">neutral</label>
         </div>
@@ -36,7 +34,6 @@ const GrowingConditions = props => {
             type="checkbox"
             id="soil_ph_alkaline"
             onChange={props.handleCheck}
-            defaultChecked
           ></input>
           <label htmlFor="soil_ph_alkaline">alkaline</label>
         </div>
@@ -49,7 +46,6 @@ const GrowingConditions = props => {
             type="checkbox"
             id="soil_type_clay"
             onChange={props.handleCheck}
-            defaultChecked
           ></input>
           <label htmlFor="soil_type_clay">clay</label>
         </div>
@@ -58,7 +54,6 @@ const GrowingConditions = props => {
             type="checkbox"
             id="soil_type_average"
             onChange={props.handleCheck}
-            defaultChecked
           ></input>
           <label htmlFor="soil_type_average">average</label>
         </div>
@@ -67,7 +62,6 @@ const GrowingConditions = props => {
             type="checkbox"
             id="soil_type_sand"
             onChange={props.handleCheck}
-            defaultChecked
           ></input>
           <label htmlFor="soil_type_sand">sand</label>
         </div>
@@ -88,7 +82,6 @@ const GrowingConditions = props => {
             type="checkbox"
             id="water_average"
             onChange={props.handleCheck}
-            defaultChecked
           ></input>
           <label htmlFor="water_average">average</label>
         </div>
@@ -117,7 +110,6 @@ const GrowingConditions = props => {
             type="checkbox"
             id="sun_partial"
             onChange={props.handleCheck}
-            defaultChecked
           ></input>
           <label htmlFor="sun_partial">partial</label>
         </div>
@@ -196,7 +188,6 @@ const GrowingConditions = props => {
           `}
         </style>
     </div>
-  );
-};
+  )
 
 export default GrowingConditions;
